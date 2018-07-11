@@ -453,7 +453,7 @@ namespace Paysafe.CustomerVault
             }
 
             /// <summary>
-            /// Set the nickName parameter
+            /// Set the singleUseToken parameter
             /// </summary>
             /// <param name=data>string</param>
             /// <returns>CardBuilder</returns>

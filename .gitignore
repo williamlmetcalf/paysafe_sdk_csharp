@@ -1,2 +1,9 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
 bin
 obj
+packages
+.vs

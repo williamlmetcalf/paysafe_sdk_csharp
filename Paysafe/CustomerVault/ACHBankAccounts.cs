@@ -41,6 +41,7 @@ namespace Paysafe.CustomerVault
         {
             {CustomerVaultConstants.id,STRING_TYPE},            
             {CustomerVaultConstants.nickName, STRING_TYPE},
+            {CustomerVaultConstants.singleUseToken, STRING_TYPE},
             {CustomerVaultConstants.merchantRefNum, STRING_TYPE},
             {CustomerVaultConstants.status, CustomerVaultConstants.enumStatus},
             {CustomerVaultConstants.statusReason, STRING_TYPE},
@@ -70,6 +71,24 @@ namespace Paysafe.CustomerVault
         public void id(string data)
         {
             this.setProperty(CustomerVaultConstants.id, data);
+        }
+
+        /// <summary>
+        /// Get the singleUseToken
+        /// </summary>
+        /// <returns>String</returns>
+        public String singleUseToken()
+        {
+            return this.getProperty(CustomerVaultConstants.singleUseToken);
+        }
+
+        /// <summary>
+        /// Set the singleUseToken
+        /// </summary>
+        /// <returns>void</returns>
+        public void singleUseToken(String data)
+        {
+            this.setProperty(CustomerVaultConstants.singleUseToken, data);
         }
 
         /// <summary>
@@ -320,6 +339,17 @@ namespace Paysafe.CustomerVault
             public ACHAccountBuilder nickName(string data)
             {
                 this.properties[CustomerVaultConstants.nickName] = data;
+                return this;
+            }
+
+            /// <summary>
+            /// Set the singleUseToken parameter
+            /// </summary>
+            /// <param name="data">string</param>
+            /// <returns>ACHAccountBuilder</returns>
+            public ACHAccountBuilder singleUseToken(string data)
+            {
+                this.properties[CustomerVaultConstants.singleUseToken] = data;
                 return this;
             }
 

@@ -170,17 +170,34 @@ namespace Paysafe.CustomerVault
         {
             account.setRequiredFields(new List<string> { CustomerVaultConstants.profileId });
             account.checkRequiredFields();
-            account.setRequiredFields(new List<string> {
-                CustomerVaultConstants.accountHolderName,
-                CustomerVaultConstants.accountNumber,
-                CustomerVaultConstants.routingNumber,
-                CustomerVaultConstants.billingAddressId,
-                CustomerVaultConstants.accountType,                  
-            });
-            account.checkRequiredFields();
+
+            if (string.IsNullOrWhiteSpace(account.singleUseToken()))
+            {
+                account.setRequiredFields(new List<string> {
+                    CustomerVaultConstants.accountHolderName,
+                    CustomerVaultConstants.accountNumber,
+                    CustomerVaultConstants.routingNumber,
+                    CustomerVaultConstants.billingAddressId,
+                    CustomerVaultConstants.accountType,
+                });
+
+                account.checkRequiredFields();
+            }
+            else
+            {
+                account.setOptionalFields(new List<string> {
+                    CustomerVaultConstants.accountHolderName,
+                    CustomerVaultConstants.accountNumber,
+                    CustomerVaultConstants.routingNumber,
+                    CustomerVaultConstants.billingAddressId,
+                    CustomerVaultConstants.accountType,
+                });
+            }
+            
             account.setOptionalFields(new List<string> {
                 CustomerVaultConstants.nickName,
-                CustomerVaultConstants.merchantRefNum
+                CustomerVaultConstants.merchantRefNum,
+                CustomerVaultConstants.singleUseToken
             });
             
             Request request = new Request(
